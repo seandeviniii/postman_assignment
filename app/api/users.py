@@ -99,7 +99,7 @@ def unfollow():
     except (ValueError):
         return bad_request('Please provide integer ids.')
 
-# Creating a tweet
+# Getting a tweet
 @bp.route('/v1/tweet/<int:id>', methods=['GET'])
 @token_auth.login_required
 def return_tweet(id):

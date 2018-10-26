@@ -52,11 +52,8 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(u2.followers.count(), 0)
     
     def test_get_user(self):
-        u = User.query.filter_by(id=1).first()
-        data = u.to_dict()
-        response = requests.get('http://localhost:5000/api/v1/users/1',
-            headers={'Authorization': 'Bearer mYlGGpyUy5dVFDTXCxbRvxDh3w4+kbgP'})
-        self.assertEqual(response.json(), data)
+        response = requests.get('http://localhost:5000/api/v1/users/1')
+        self.assertEqual(response.json(), {'error':'Unauthorized'})
 
 
 if __name__ == '__main__':
