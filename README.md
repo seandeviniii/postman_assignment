@@ -13,6 +13,8 @@
 9. Use ```http GET http://localhost:5000/api/v1/users/<user_id>``` with authorization token to access users profile.
 10. Use ```http GET http://localhost:5000/api/v1/tweet/<int:id>``` with authorization token to get a tweet. Similarly, creating and deleting are made.
 11. User ```http POST http://localhost:5000/api/v1/follows``` with json passing follower_id and followed_id to the endpoint.
+12. Use ```http DELETE http://localhost:5000/api/tokens Authorization:"Bearer <token>"``` to log out a user and revoke the token.
+
 
 
 *NOTE*: Some users and tweets may be present already.
