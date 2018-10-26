@@ -3,6 +3,7 @@ import unittest
 from app import create_app, db
 from app.models import User, Tweet
 from config import Config
+import requests
 
 class TestConfig(Config):
     TESTING = True
@@ -49,7 +50,14 @@ class UserModelCase(unittest.TestCase):
         self.assertFalse(u1.is_following(u2))
         self.assertEqual(u1.followed.count(), 0)
         self.assertEqual(u2.followers.count(), 0)
+    
+    def test_get_user(self):
+        u = User.query.filter_by(id=1).first()
+        data = u.to_dict()
+        response = requests.get('http://localhost:5000/api/v1/users/1',
+            headers={'Authorization': 'Bearer mYlGGpyUy5dVFDTXCxbRvxDh3w4+kbgP'})
+        self.assertEqual(response.json(), data)
 
 
 if __name__ == '__main__':
-    unittest.main(verbosity=2)
+    unittest.main(verbosity=3)

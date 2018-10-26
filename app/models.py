@@ -99,3 +99,12 @@ class Tweet(db.Model):
 
     def __repr__(self):
         return '<Tweet {}>'.format(self.body)
+
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'body': self.body,
+            'timestamp': self.timestamp,
+            'author': self.author.username
+        }
+        return data
